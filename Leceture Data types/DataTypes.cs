@@ -6,36 +6,47 @@ using System.Threading.Tasks;
 
 namespace ConsoleApplication1
 {
-    class Program
+    class DataTypes
     {
         static void Main(string[] args)
         {
-            ////////////////double//////////////
-            const double pi = 3.14159;
-            Console.WriteLine("double values:");
-            double tryUsedouble = 12.4343;
-            tryUsedouble = 14.333;
-            Console.WriteLine(double.MaxValue.ToString());
-            Console.WriteLine(double.MinValue.ToString());
             ////////////////////int//////////////////
             Console.WriteLine("int values:");
+            int commonInt = -77;
+            int bitWiseSetInt = 0b11;//3
+            int hexadecimalSetInt = 0xff;//255
 
-            Console.WriteLine(int.MaxValue.ToString());
-            Console.WriteLine(int.MinValue.ToString());
             int addition = 5 + 5;
             int division = 10 / 2;
-            ///////////////////boolean//////////////////////
-            Console.WriteLine("boolean values:");
-            string inputString = Console.ReadLine();
-            bool hasAnyInput = String.IsNullOrWhiteSpace(inputString);
+            Console.WriteLine(int.MaxValue.ToString());
+            Console.WriteLine(int.MinValue.ToString());
 
-            if (hasAnyInput)
+            ////////////////double//////////////
+            Console.WriteLine("double values:");
+            const double pi = 3.14159;
+            //pi = 9.5;
+            double tryUsedouble = 12.4343;
+            tryUsedouble = 14.333;
+            tryUsedouble = 2.3 + 3.4;
+            int integer = 4;
+            tryUsedouble = integer;
+            // integer = tryUsedouble;
+            Console.WriteLine(double.MaxValue.ToString());
+            Console.WriteLine(double.MinValue.ToString());
+
+            ///////////////////boolean//////////////////////
+            const string boolString = "boolean values:";
+            Console.WriteLine(boolString);
+            string inputString = Console.ReadLine();
+            bool isEmtpyInput = String.IsNullOrWhiteSpace(inputString);
+
+            if (isEmtpyInput)
             {
-                Console.WriteLine("We received some text");
+                Console.WriteLine("Empty value :(");
             }
             else
             {
-                Console.WriteLine("Empty value :(");
+                Console.WriteLine("We received some text");
             }
 
             var logicalOrResult = true || false;
@@ -46,11 +57,13 @@ namespace ConsoleApplication1
             Console.WriteLine(true);
             ///////////////////string////////////////
             string literal = "Hi students";
+            char hChar = 'h';
+            string singleCharString = hChar.ToString();
             char secondChar = literal[1];
             string concatination = literal + secondChar;
             string anotherConcatination = "Hi " + "students";
             //escape chars;
-            Console.WriteLine("Hello\tWorld\n\n");
+            Console.WriteLine("Hello\tWorld\n\n:)");
             ///////////////////enum/////////////////
             Mood myCurrentMood = Mood.Normal;
             if (Mood.Bad == myCurrentMood)
