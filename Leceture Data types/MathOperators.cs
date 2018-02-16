@@ -18,8 +18,11 @@ namespace ConsoleApplication1
 
             addition = addition + 1;
             ++addition;
+            --addition;
             int suffixIncrement = addition++;
             int prefixIncrement = ++addition;
+           // int demoSuffix = addition++ + 1;
+            int demoPrefix = ++addition + 1;
         }
     }
 }

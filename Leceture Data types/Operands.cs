@@ -13,7 +13,7 @@ namespace ConsoleApplication1
             /////////////// == /////////////////
             //int a = 10;
             //int b = 4;
-            //bool c = a == b; // false
+            //bool c = (a == b); // false
 
             //////////////// != ///////////////
             //int a = 10;
@@ -31,13 +31,13 @@ namespace ConsoleApplication1
             //int b = 4;
             //bool c = a > b;     // true
             //bool d = a > 25;    // false
-
+            //bool x = a > 10;       //false
             /////////////// <= /////////////////
             //int a = 10;
             //int b = 4;
             //bool c = a <= b;     // false
             //bool d = a <= 25;    // true
-
+            //bool x = a <= 10;       //true
             /////////////// >= ////////////////
             //int a = 10;
             //int b = 4;
@@ -45,25 +45,25 @@ namespace ConsoleApplication1
             //bool d = a >= 25;    // false
 
             ////////////// |  /////////////////
-            //bool negative = false | false;
+            //bool negative = (false | false);
             //bool positive = false | true;
             //bool positiveAsWell = GetTrueValue() | GetTrueValue();
 
             /////////////// ||  //////////////
-            //bool negative = false | false;
-            //bool positive = false | true;
-            //bool positiveAsWell = GetTrueValue() | GetTrueValue();
+            //bool negative = false || false;
+            //bool positive = false || true;
+            //bool positiveAsWell = GetTrueValue() || GetTrueValue();
 
             //////////////// &  ///////////////
             //bool positive = true & true;
             //bool negative = false & true;
-            //bool negativeAsWell = GetFalseValue() | GetFalseValue();
+            //bool negativeAsWell = GetFalseValue() & GetFalseValue();
 
 
             //////////////// &&  ///////////////
             //bool positive = true && true;
             //bool negative = false && true;
-            //bool negativeAsWell = GetFalseValue() | GetFalseValue();
+            //bool negativeAsWell = GetFalseValue() && GetFalseValue();
 
             /////////////// !  /////////////////
             //bool a = true;
@@ -71,6 +71,7 @@ namespace ConsoleApplication1
             //bool x = !!a;
 
             ///////////// ^ //////////////////
+            /// XOR exclusive or
             bool positive = true ^ false;
             bool negative = true ^ true;
             bool negativeAsWell = false ^ false;
