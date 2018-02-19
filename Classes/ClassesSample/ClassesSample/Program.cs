@@ -16,6 +16,11 @@ namespace ClassesSample
         {
             return Age < studentToCompare.Age;
         }
+
+        public bool IsOlder(int age)
+        {
+            return Age < age;
+        }
     }
 
     class ScopeSample
@@ -27,6 +32,8 @@ namespace ClassesSample
             MethodScopeDemo();
             methodScopeStudent.Age = 4;
             classScope.Age = 6;
+            classScope = null;
+            Console.WriteLine(classScope.Age);
         }
 
         void MethodScopeDemo()
