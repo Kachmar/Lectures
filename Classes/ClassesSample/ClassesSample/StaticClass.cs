@@ -8,9 +8,19 @@ namespace ClassesSample
 {
     public static class StaticClass
     {
-        public string GetGreeting()
+        static StaticClass( )
+        {
+            
+        }
+
+        public static string GetGreeting()
         {
             return "Hi there!";
         }
+
+        //public string DynamicNotAllowed()
+        //{
+        //    return "error";
+        //}
     }
 }

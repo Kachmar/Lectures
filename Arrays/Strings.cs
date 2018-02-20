@@ -8,7 +8,7 @@ namespace Arrays
 {
     class Translations
     {
-        public const string Sentece = "Dear {0}, I know you,{0}, your city is {1}";
+        public const string Sentence = "Dear {0}, I know you,{0}, your city is {1}";
     }
 
     class Strings
@@ -19,7 +19,7 @@ namespace Arrays
             //string concatination = simpleString + "! " + 5;
             //string escapeChars = "My \"good\" boss, go to \n c:\\ drive";
             //string noEscapeChars = @"c:\";
-            //string format = String.Format(Translations.Sentece, "Bob", "Lviv");
+            //string format = String.Format(Translations.Sentence, "Bob", "Lviv");
             //string numFormat = String.Format("{0:N}", 1234567890);
             //string percentage = String.Format("perc: {0:p}", .35);
 
@@ -66,23 +66,23 @@ namespace Arrays
             string trimmed = text.Substring(indexOfExclamationMark);
             Console.WriteLine(trimmed.Replace("cs", "c's"));
 
-            int indexOfet = trimmed.IndexOf("et");
-            int counter = 0;
-            while (indexOfet > 0)
-            {
-                indexOfet = trimmed.IndexOf("et", indexOfet + 1);
-                ++counter;
-            }
-
+            //int indexOfet = trimmed.IndexOf("et");
             //int counter = 0;
-            //for (int i = 0; i < trimmed.Length - 1; i++)
+            //while (indexOfet > 0)
             //{
-            //    string candidate = trimmed.Substring(i, 2);
-            //    if (candidate == "et")
-            //    {
-            //        counter++;
-            //    }
+            //    indexOfet = trimmed.IndexOf("et", indexOfet + 1);
+            //    ++counter;
             //}
+
+            int counter = 0;
+            for (int i = 0; i < trimmed.Length-1; i++)
+            {
+                string candidate = trimmed.Substring(i, 2);
+                if (candidate == "et")
+                {
+                    counter++;
+                }
+            }
 
             Console.WriteLine("Number of et: " + counter);
             Console.ReadLine();
