@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F5EA2D88-9ABE-4BF6-A0D4-C7D2F48521B5}</ProjectGuid>
+    <ProjectGuid>{F017AEE3-A10B-4B9F-A605-C019C7695CE5}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>FileProcessor</RootNamespace>
-    <AssemblyName>FileProcessor</AssemblyName>
+    <RootNamespace>Classes.OOP</RootNamespace>
+    <AssemblyName>Classes.OOP</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IProcessor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
