@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Classes.OOP
 {
-    class Program
+    internal class Program
     {
         static void Main(string[] args)
         {
@@ -14,29 +14,34 @@ namespace Classes.OOP
             textPrinter.PrintNextPage("Introduction");
             textPrinter.PrintNextPage("Contents");
             ImagePrinter imagePrinter = new ImagePrinter();
-            imagePrinter.PrintNextPage(new byte[] { 40,45,6 });
-            Console.ReadLine( );
+            imagePrinter.PrintNextPage(new byte[] { 40, 45, 6 });
+            Console.ReadLine();
         }
     }
 
-    public class ImagePrinter
+    internal abstract class PrinterBase
     {
         private const string BookTitle = "Book of jungle";
         private int index = 1;
+
+        internal void PrintFooter()
+        {
+            Console.WriteLine(this.index++);
+        }
+
+        public void PrintHeader()
+        {
+            Console.WriteLine(BookTitle);
+        }
+    }
+
+    internal class ImagePrinter : PrinterBase
+    {
         public void PrintNextPage(byte[] imageBytes)
         {
             PrintHeader();
             PrintBody(imageBytes);
             PrintFooter();
-        }
-        private void PrintFooter()
-        {
-            Console.WriteLine(this.index++);
-        }
-
-        private void PrintHeader()
-        {
-            Console.WriteLine(BookTitle);
         }
 
         private void PrintBody(byte[] imageBytes)
@@ -46,26 +51,14 @@ namespace Classes.OOP
         }
     }
 
-    public class TextPrinter
+    internal class TextPrinter : PrinterBase
     {
-        private const string BookTitle = "Book of jungle";
-        private int index = 1;
 
         public void PrintNextPage(string text)
         {
             PrintHeader();
             PrintBody(text);
             PrintFooter();
-        }
-
-        private void PrintFooter()
-        {
-            Console.WriteLine(this.index++);
-        }
-
-        private void PrintHeader()
-        {
-            Console.WriteLine(BookTitle);
         }
 
         private void PrintBody(string text)

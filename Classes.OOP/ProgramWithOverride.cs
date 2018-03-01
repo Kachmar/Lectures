@@ -11,12 +11,19 @@ namespace Classes.OOP
         static void Main(string[] args)
         {
             TextPrinter textPrinter = new TextPrinter("Jungle book", new[] { "Introduction", "Contents" });
+
             textPrinter.PrintNextPage();
             textPrinter.PrintNextPage();
             ImagePrinter imagePrinter = new ImagePrinter("Jungle book", new byte[][] { new byte[] { 40, 45, 6 } });
             imagePrinter.PrintNextPage();
-            TextPrinterWithExtendedHeading textPrinterWithExtendedHeading = new TextPrinterWithExtendedHeading("Jungle book", new[] { "Introduction", "Contents" });.
+            TextPrinterWithExtendedHeading textPrinterWithExtendedHeading = new TextPrinterWithExtendedHeading("Jungle book", new[] { "Introduction", "Contents" });
             textPrinterWithExtendedHeading.PrintNextPage();
+            //polymorphism
+            PrinterBase printerA = new TextPrinter("Jungle book", new[] { "Introduction", "Contents" });
+            PrinterBase printerB = new ImagePrinter("Jungle book", new byte[][] { new byte[] { 40, 45, 6 } });
+            printerB.PrintNextPage();
+            printerA.PrintNextPage();
+            //
             Console.ReadLine();
         }
     }
