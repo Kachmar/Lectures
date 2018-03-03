@@ -10,7 +10,7 @@ namespace Unit_Tests
             var startDate = DateTime.Parse(elements[0]);
             var endDate = DateTime.Parse(elements[1]);
             var diff = endDate - startDate;
-            return diff.Seconds.ToString();
+            return diff.TotalSeconds.ToString();
         }
 
     }

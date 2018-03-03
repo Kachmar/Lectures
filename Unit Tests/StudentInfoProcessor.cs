@@ -26,8 +26,10 @@ namespace Unit_Tests
                 {
                     string convertedElement = converter.Convert(elements);
                     stringBuilder.Append(convertedElement);
+                    stringBuilder.Append("|");
 
                 }
+                stringBuilder.AppendLine();
             }
             return stringBuilder.ToString();
         }

@@ -32,6 +32,7 @@ namespace Unit_Tests
             string newFileName = Path.GetFileName(fullName);
             string targetFolder = Path.Combine(Directory.GetCurrentDirectory(), targetFolderName);
             Directory.CreateDirectory(targetFolder);
+            File.Delete(Path.Combine(targetFolder, newFileName));
             File.Move(fullName, Path.Combine(targetFolder, newFileName));
         }
 

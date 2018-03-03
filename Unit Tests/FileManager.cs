@@ -15,6 +15,7 @@ namespace Unit_Tests
         {
             this.fileCommander = fileCommander;
         }
+
         public IFileInfo[] GetFiles()
         {
             string folder = this.GetFolderName();
