@@ -2,13 +2,13 @@ using System;
 
 namespace Unit_Tests
 {
-    class PhoneConverter : IConverter
+    public class PhoneConverter : IConverter
     {
 
         public string Convert(string[] elements)
         {
-            string phone = elements[3];
-            return String.Format("{0:#(###) ###-##-##}", phone.Trim());
+            long phone = long.Parse(elements[3].Trim());
+            return String.Format("{0:##(###) ###-##-##}", phone);
         }
 
     }

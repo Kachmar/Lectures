@@ -12,6 +12,20 @@ namespace Unit_Tests
             return ReadFiles(files);
         }
 
+        public void SaveFile(string fileName, string fileContent)
+        {
+            File.WriteAllText(fileName, fileContent);
+        }
+
+        public void MoveFile(string fullName, string targetFolderName)
+        {
+            string newFileName = Path.GetFileName(fullName);
+            string targetFolder = Path.Combine(Directory.GetCurrentDirectory(), targetFolderName);
+            Directory.CreateDirectory(targetFolder);
+            File.Delete(Path.Combine(targetFolder, newFileName));
+            File.Move(fullName, Path.Combine(targetFolder, newFileName));
+        }
+
         private FileInfo[] ReadFiles(string[] files)
         {
             List<FileInfo> result = new List<FileInfo>();
@@ -26,15 +40,5 @@ namespace Unit_Tests
             }
             return result.ToArray();
         }
-
-        public void MoveFile(string fullName, string targetFolderName)
-        {
-            string newFileName = Path.GetFileName(fullName);
-            string targetFolder = Path.Combine(Directory.GetCurrentDirectory(), targetFolderName);
-            Directory.CreateDirectory(targetFolder);
-            File.Delete(Path.Combine(targetFolder, newFileName));
-            File.Move(fullName, Path.Combine(targetFolder, newFileName));
-        }
-
     }
 }

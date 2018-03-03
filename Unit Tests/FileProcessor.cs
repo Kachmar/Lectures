@@ -4,19 +4,21 @@ namespace Unit_Tests
 {
     internal class FileProcessor
     {
+        private const string ProcessedFolderName = "Processed";
+        private const string ErrorFolderName = "Error";
         private IStudentInfoProcessor studentInfoProcessor;
 
         private IScoreProcessor scoreProcessor;
-
-        private IFileWriter fileWriter;
-
-        private IFileManager fileManager;
-        public FileProcessor(IFileManager fileManager, IFileWriter fileWriter, IScoreProcessor scoreProcessor, IStudentInfoProcessor studentInfoProcessor)
+        private IFileCommander fileCommander;
+        //  private IFileManager fileManager;
+        public FileProcessor(
+            IFileCommander fileCommander,
+            IScoreProcessor scoreProcessor,
+            IStudentInfoProcessor studentInfoProcessor)
 
         {
             this.studentInfoProcessor = studentInfoProcessor;
-            this.fileManager = fileManager;
-            this.fileWriter = fileWriter;
+            this.fileCommander = fileCommander;
             this.scoreProcessor = scoreProcessor;
         }
         public void Process(IFileInfo fileInfo)
@@ -24,8 +26,8 @@ namespace Unit_Tests
             try
             {
                 string fileContent = this.studentInfoProcessor.Process(fileInfo);
-                this.fileWriter.SaveFileContent(this.GetStudentFileName(fileInfo.Name), fileContent);
-                this.fileManager.MoveFileToProcessed(fileInfo);
+                this.fileCommander.SaveFile(this.GetStudentFileName(fileInfo.Name), fileContent);
+                this.fileCommander.MoveFile(fileInfo.FullName, ProcessedFolderName);
 
             }
             catch (Exception ex)
@@ -34,7 +36,7 @@ namespace Unit_Tests
                 Console.WriteLine($"Failed to process file {fileInfo.Name}, because: {ex.Message}");
                 try
                 {
-                    this.fileManager.MoveToError(fileInfo);
+                    this.fileCommander.MoveFile(fileInfo.FullName, ErrorFolderName);
                 }
                 catch (Exception subException)
                 {

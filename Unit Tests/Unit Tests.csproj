@@ -48,12 +48,10 @@
     <Compile Include="FileInfo.cs" />
     <Compile Include="FileManager.cs" />
     <Compile Include="FileProcessor.cs" />
-    <Compile Include="FileWriter.cs" />
     <Compile Include="IConverter.cs" />
     <Compile Include="IFileCommander.cs" />
     <Compile Include="IFileInfo.cs" />
     <Compile Include="IFileManager.cs" />
-    <Compile Include="IFileWriter.cs" />
     <Compile Include="IScoreProcessor.cs" />
     <Compile Include="IStudentInfoProcessor.cs" />
     <Compile Include="LastNameConverter.cs" />

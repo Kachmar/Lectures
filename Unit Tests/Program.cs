@@ -9,9 +9,8 @@ namespace Unit_Tests
     {
         static void Main(string[] args)
         {
-            FileProcessor fileProcessor = new FileProcessor(
-                new FileManager(new FileCommander()),
-                new FileWriter(), null,
+            FileProcessor fileProcessor = new FileProcessor(new FileCommander(),
+                null,
                 new StudentInfoProcessor(new IConverter[] { new NameConverter(), new LastNameConverter(), new PhoneConverter(), new DistanceLearningConverter(), new DurationConverter() }));
             FileManager fileManager = new FileManager(new FileCommander());
             while (true)

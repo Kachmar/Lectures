@@ -4,6 +4,8 @@ namespace Unit_Tests
     {
         FileInfo[] GetFiles(string folder);
 
-        void MoveFile(string fileInfoFullName, string processedFolderName);
+        void MoveFile(string fullName, string folderName);
+
+        void SaveFile(string fileName, string fileContent);
     }
 }
