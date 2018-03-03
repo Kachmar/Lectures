@@ -11,6 +11,14 @@ namespace Unit_Tests
         private IFileWriter fileWriter;
 
         private IFileManager fileManager;
+        public FileProcessor(IFileManager fileManager, IFileWriter fileWriter, IScoreProcessor scoreProcessor, IStudentInfoProcessor studentInfoProcessor)
+
+        {
+            this.studentInfoProcessor = studentInfoProcessor;
+            this.fileManager = fileManager;
+            this.fileWriter = fileWriter;
+            this.scoreProcessor = scoreProcessor;
+        }
         public void Process(IFileInfo fileInfo)
         {
             try

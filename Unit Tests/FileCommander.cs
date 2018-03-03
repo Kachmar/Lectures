@@ -30,7 +30,9 @@ namespace Unit_Tests
         public void MoveFile(string fullName, string targetFolderName)
         {
             string newFileName = Path.GetFileName(fullName);
-            File.Move(fullName, Path.Combine(targetFolderName, newFileName));
+            string targetFolder = Path.Combine(Directory.GetCurrentDirectory(), targetFolderName);
+            Directory.CreateDirectory(targetFolder);
+            File.Move(fullName, Path.Combine(targetFolder, newFileName));
         }
 
     }

@@ -48,6 +48,7 @@
     <Compile Include="FileInfo.cs" />
     <Compile Include="FileManager.cs" />
     <Compile Include="FileProcessor.cs" />
+    <Compile Include="FileWriter.cs" />
     <Compile Include="IConverter.cs" />
     <Compile Include="IFileCommander.cs" />
     <Compile Include="IFileInfo.cs" />

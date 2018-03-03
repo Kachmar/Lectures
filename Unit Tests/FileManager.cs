@@ -11,7 +11,10 @@ namespace Unit_Tests
         private const string InputFolderName = "Input";
 
         private IFileCommander fileCommander;
-
+        public FileManager(IFileCommander fileCommander)
+        {
+            this.fileCommander = fileCommander;
+        }
         public IFileInfo[] GetFiles()
         {
             string folder = this.GetFolderName();

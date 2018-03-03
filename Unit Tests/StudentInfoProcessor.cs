@@ -18,9 +18,9 @@ namespace Unit_Tests
         {
             string[] lines = SplitIntoLines(fileInfo.Content);
             StringBuilder stringBuilder = new StringBuilder();
-            foreach (var line in lines.Take(1))
+            foreach (var line in lines.Skip(1))
             {
-                var elements = line.Split(';');
+                var elements = line.Trim().Split(';');
                 ValidateElements(elements);
                 foreach (var converter in this.converters)
                 {
@@ -42,7 +42,8 @@ namespace Unit_Tests
 
         private string[] SplitIntoLines(string fileInfoContent)
         {
-            return fileInfoContent.Split('\n');
+            string[] lineSplitChars = new string[] { "\r\n" };
+            return fileInfoContent.Split(lineSplitChars, StringSplitOptions.RemoveEmptyEntries);
         }
     }
 }

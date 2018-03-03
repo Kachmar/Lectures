@@ -5,9 +5,12 @@ namespace Unit_Tests
     class DurationConverter : IConverter
     {
 
-        public string Convert( string[] elements )
+        public string Convert(string[] elements)
         {
-            throw new NotImplementedException();
+            var startDate = DateTime.Parse(elements[0]);
+            var endDate = DateTime.Parse(elements[1]);
+            var diff = endDate - startDate;
+            return diff.Seconds.ToString();
         }
 
     }
