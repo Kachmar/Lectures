@@ -2,7 +2,7 @@
 
 namespace Unit_Tests
 {
-    internal class FileProcessor
+    public class FileProcessor
     {
         private const string ProcessedFolderName = "Processed";
         private const string ErrorFolderName = "Error";
@@ -10,7 +10,7 @@ namespace Unit_Tests
 
         private IScoreProcessor scoreProcessor;
         private IFileCommander fileCommander;
-        //  private IFileManager fileManager;
+
         public FileProcessor(
             IFileCommander fileCommander,
             IScoreProcessor scoreProcessor,
@@ -27,8 +27,6 @@ namespace Unit_Tests
             {
                 string fileContent = this.studentInfoProcessor.Process(fileInfo);
                 this.fileCommander.SaveFile(this.GetStudentFileName(fileInfo.Name), fileContent);
-                this.fileCommander.MoveFile(fileInfo.FullName, ProcessedFolderName);
-
             }
             catch (Exception ex)
             {
@@ -42,6 +40,16 @@ namespace Unit_Tests
                 {
                     Console.WriteLine($"Failed to move the file {fileInfo.Name} to error folder, because: {subException.Message}");
                 }
+                return;
+            }
+
+            try
+            {
+                this.fileCommander.MoveFile(fileInfo.FullName, ProcessedFolderName);
+            }
+            catch (Exception subException)
+            {
+                Console.WriteLine($"Failed to move the file {fileInfo.Name} to processed folder, because: {subException.Message}");
             }
         }
 

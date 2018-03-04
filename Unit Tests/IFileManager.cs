@@ -1,7 +1,7 @@
 ﻿namespace Unit_Tests
 {
-    interface IFileManager
+   public interface IFileManager
     {
-        IFileInfo[] GetFiles();
+        IFileInfo[] GetFiles(string folder);
     }
 }

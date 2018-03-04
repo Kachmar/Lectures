@@ -1,6 +1,6 @@
 namespace Unit_Tests
 {
-    internal interface IFileCommander
+    public interface IFileCommander
     {
         FileInfo[] GetFiles(string folder);
 

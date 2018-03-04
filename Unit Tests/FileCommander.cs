@@ -3,7 +3,7 @@ using System.IO;
 
 namespace Unit_Tests
 {
-    class FileCommander : IFileCommander
+  public  class FileCommander : IFileCommander
     {
 
         public FileInfo[] GetFiles(string folder)

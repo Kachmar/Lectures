@@ -2,7 +2,7 @@ using System;
 
 namespace Unit_Tests
 {
-    class DistanceLearningConverter : IConverter
+  public  class DistanceLearningConverter : IConverter
     {
 
         public string Convert(string[] elements)

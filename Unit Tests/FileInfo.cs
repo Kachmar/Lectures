@@ -1,6 +1,6 @@
 namespace Unit_Tests
 {
-    class FileInfo : IFileInfo
+    public class FileInfo : IFileInfo
     {
         public string Name { get; set; }
 

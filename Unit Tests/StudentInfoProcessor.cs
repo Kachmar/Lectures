@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Unit_Tests
 {
-    class StudentInfoProcessor : IStudentInfoProcessor
+    public class StudentInfoProcessor : IStudentInfoProcessor
     {
         private readonly IConverter[] converters;
 

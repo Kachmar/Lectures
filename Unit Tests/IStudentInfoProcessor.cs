@@ -1,6 +1,6 @@
 namespace Unit_Tests
 {
-    internal interface IStudentInfoProcessor
+    public interface IStudentInfoProcessor
     {
         string Process(IFileInfo fileInfo);
     }

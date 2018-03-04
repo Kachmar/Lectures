@@ -1,6 +1,6 @@
 ﻿namespace Unit_Tests
 {
-    internal interface IScoreProcessor
+    public interface IScoreProcessor
     {
     }
 }
