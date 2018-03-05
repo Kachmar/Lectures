@@ -129,6 +129,15 @@ namespace Classes.OOP
         }
     }
 
+
+    public class CastingSample
+    {
+        public void Cast()
+        {
+            Adv
+        }
+    }
+
     //class Program
     //{
     //    static void Main(string[] args)
@@ -165,27 +174,27 @@ namespace Classes.OOP
     //        }
     //    }
 
-    //    public class AdvancedNinja : IHuman, IWarrior
-    //    {
-    //        private IWeapon[] weapons;
+    class AdvancedNinja : Ninja IHuman, IWarrior
+    {
+        private IWeapon[] weapons;
 
-    //        public AdvancedNinja(IWeapon[] weapons)
-    //        {
-    //            this.weapons = weapons;
-    //        }
-    //        public void Move()
-    //        {
-    //            Console.WriteLine("Got to battle field");
-    //        }
+        public AdvancedNinja(IWeapon[] weapons)
+        {
+            this.weapons = weapons;
+        }
+        public void Move()
+        {
+            Console.WriteLine("Got to battle field");
+        }
 
-    //        public void Attack()
-    //        {
-    //            foreach (var weapon in this.weapons)
-    //            {
-    //                weapon.Strike();
-    //            }
-    //        }
-    //    }
+        public void Attack()
+        {
+            foreach (var weapon in this.weapons)
+            {
+                weapon.Strike();
+            }
+        }
+    }
 
     //    public class Ninja : IHuman, IWarrior
     //    {

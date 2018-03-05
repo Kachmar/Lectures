@@ -102,4 +102,25 @@ namespace Classes.OOP
             Console.WriteLine(this.texts[this.index]);
         }
     }
+
+    public class CastingSample
+    {
+        public void Cast()
+        {
+            PrinterBase printer = new TextPrinter();
+            if(printer is TextPrinter)
+            {
+                ((TextPrinter)printer).PrintNextPage();
+                TextPrinter textPrinter = (printer as TextPrinter);
+                textPrinter.PrintNextPage();
+            }
+
+            if (!(printer is TextPrinterWithExtendedHeading))
+            {
+                ((TextPrinterWithExtendedHeading)printer).PrintNextPage();
+                TextPrinter textPrinter = (printer as TextPrinterWithExtendedHeading);
+                textPrinter.PrintNextPage();
+            }
+        }
+    }
 }
