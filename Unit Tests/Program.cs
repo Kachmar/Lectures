@@ -13,19 +13,6 @@ namespace Unit_Tests
 
         static void Main(string[] args)
         {
-            try
-            {
-                string[] arr = new string[2];
-             var x =   arr[6];
-            }
-            catch(Exception ex)
-            {
-                return;
-            }
-            finally
-            {
-                Console.WriteLine("Finally works when catch works!!!");
-            }
             FileProcessor fileProcessor = new FileProcessor(new FileCommander(),
                 null,
                 new StudentInfoProcessor(new IConverter[] { new NameConverter(), new LastNameConverter(), new PhoneConverter(), new DistanceLearningConverter(), new DurationConverter() }));
