@@ -75,6 +75,10 @@ namespace ConsoleApplication1
             bool positive = true ^ false;
             bool negative = true ^ true;
             bool negativeAsWell = false ^ false;
+
+            // priority of operations
+            bool x = (positive || negative) && (!negativeAsWell);
+
             Console.ReadLine();
         }
 
