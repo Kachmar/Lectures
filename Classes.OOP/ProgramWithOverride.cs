@@ -10,27 +10,52 @@ namespace Classes.OOP
     {
         static void Main(string[] args)
         {
-            TextPrinter textPrinter = new TextPrinter("Jungle book", new[] { "Introduction", "Contents" });
-
-            textPrinter.PrintNextPage();
-            textPrinter.PrintNextPage();
-            ImagePrinter imagePrinter = new ImagePrinter("Jungle book", new byte[][] { new byte[] { 40, 45, 6 } });
-            imagePrinter.PrintNextPage();
-            TextPrinterWithExtendedHeading textPrinterWithExtendedHeading = new TextPrinterWithExtendedHeading("Jungle book", new[] { "Introduction", "Contents" });
-            textPrinterWithExtendedHeading.PrintNextPage();
+            PrinterBase textPrinter = new TextPrinterWithDateTime("Jungle book", new[] { "Introduction", "Contents" });
+          
+            PrinterBase imagePrinter = new ImagePrinter("Jungle book", new byte[][] { new byte[] { 40, 45, 6 } });
+            
+            Print(textPrinter);
+            Print(imagePrinter);
+            //Deriving from TextPrinter
+            //TextPrinterWithExtendedHeading textPrinterWithExtendedHeading = new TextPrinterWithExtendedHeading("Jungle book", new[] { "Introduction", "Contents" });
+            //textPrinterWithExtendedHeading.PrintNextPage();
             //polymorphism
-            PrinterBase printerA = new TextPrinter("Jungle book", new[] { "Introduction", "Contents" });
-            PrinterBase printerB = new ImagePrinter("Jungle book", new byte[][] { new byte[] { 40, 45, 6 } });
-            printerB.PrintNextPage();
-            printerA.PrintNextPage();
-            //
+            //PrinterBase printerA = new TextPrinter("Jungle book", new[] { "Introduction", "Contents" });
+            //PrinterBase printerB = new ImagePrinter("Jungle book", new byte[][] { new byte[] { 40, 45, 6 } });
+            //printerB.PrintNextPage();
+            //printerA.PrintNextPage();
+
+            //public: The type or member can be accessed by any other code in the same assembly or another assembly that references it.
+            //private: The type or member can be accessed only by code in the same class or struct.
+            //protected: The type or member can be accessed only by code in the same class, or in a class that is derived from that class.
+            //internal: The type or member can be accessed by any code in the same assembly, but not from another assembly.
+            //protected internal: The type or member can be accessed by any code in the assembly in which it's declared, or from within a derived class in another assembly.
+            //private protected: The type or member can be accessed only within its declaring assembly, by code in the same class or in a type that is derived from that class.
+
+            //public: публичный, общедоступный класс или член класса.Такой член класса доступен из любого места в коде, а также из других программ и сборок.
+            //private: закрытый класс или член класса.Представляет полную противоположность модификатору public. Такой закрытый класс или член класса доступен только из кода в том же классе или контексте.
+            //protected: такой член класса доступен из любого места в текущем классе или в производных классах.При этом производные классы могут располагаться в других сборках.
+            //internal: класс и члены класса с подобным модификатором доступны из любого места кода в той же сборке, однако он недоступен для других программ и сборок(как в случае с модификатором public).
+            //protected internal: совмещает функционал двух модификаторов.Классы и члены класса с таким модификатором доступны из текущей сборки и из производных классов.
+            //private protected: такой член класса доступен из любого места в текущем классе или в производных классах, которые определены в той же сборке.
+
+            // virtual - означає, що в дочірньому класі можна переоприділити.
+            // ovveride  - переоприділяє
+            // abstract - якщо клас, то означає, що його лише можна наслідувати. Якщо до методу чи властивості, тоді означає, що вона мусить бути перевизначена в дочірньому класі.
+
+            //Ask students to Create a printer that would derive from ImagePrinter, and would not print Header and Footer, just body
             Console.ReadLine();
+        }
+
+        private static void Print(PrinterBase printer)
+        {
+            printer.PrintNextPage();
         }
     }
 
-    public abstract class PrinterBase
+    internal abstract class PrinterBase
     {
-        protected string bookTitle;
+        private string bookTitle;
         protected int index = 0;
 
         protected PrinterBase(string bookTitle)
@@ -38,17 +63,7 @@ namespace Classes.OOP
             this.bookTitle = bookTitle;
         }
 
-        public void PrintNextPage()
-        {
-            this.PrintHeader();
-            PrintBody();
-            this.PrintFooter();
-        }
-
-        protected abstract void PrintBody();
-
-
-        protected void PrintFooter()
+        private void PrintFooter()
         {
             Console.WriteLine(this.index++);
         }
@@ -57,11 +72,21 @@ namespace Classes.OOP
         {
             Console.WriteLine(bookTitle);
         }
+
+        protected abstract void PrintBody();
+
+        public void PrintNextPage()
+        {
+            PrintHeader();
+            PrintBody();
+            PrintFooter();
+        }
     }
 
-    public class ImagePrinter : PrinterBase
+    internal class ImagePrinter : PrinterBase
     {
         private byte[][] imageBytesCollection;
+
         public ImagePrinter(string bookTitle, byte[][] imageBytesCollection) : base(bookTitle)
         {
             this.imageBytesCollection = imageBytesCollection;
@@ -72,55 +97,58 @@ namespace Classes.OOP
             string image = Encoding.Default.GetString(imageBytesCollection[this.index]);
             Console.WriteLine(image);
         }
-
     }
-    public class TextPrinterWithExtendedHeading : TextPrinter
-    {
-        public TextPrinterWithExtendedHeading(string bookTitle, string[] texts)
-            : base(bookTitle, texts)
-        {
-        }
 
-
-        protected override void PrintHeader()
-        {
-            base.PrintHeader();
-            Console.WriteLine(DateTime.Now);
-        }
-
-    }
-    public class TextPrinter : PrinterBase
+    internal class TextPrinter : PrinterBase
     {
         private string[] texts;
+
         public TextPrinter(string bookTitle, string[] texts) : base(bookTitle)
         {
             this.texts = texts;
         }
-
         protected override void PrintBody()
         {
             Console.WriteLine(this.texts[this.index]);
         }
     }
 
-    public class CastingSample
+    internal class TextPrinterWithDateTime : TextPrinter
     {
-        public void Cast()
+        public TextPrinterWithDateTime(string bookTitle, string[] texts) : base(bookTitle, texts)
         {
-            PrinterBase printer = new TextPrinter();
-            if(printer is TextPrinter)
-            {
-                ((TextPrinter)printer).PrintNextPage();
-                TextPrinter textPrinter = (printer as TextPrinter);
-                textPrinter.PrintNextPage();
-            }
+        }
 
-            if (!(printer is TextPrinterWithExtendedHeading))
-            {
-                ((TextPrinterWithExtendedHeading)printer).PrintNextPage();
-                TextPrinter textPrinter = (printer as TextPrinterWithExtendedHeading);
-                textPrinter.PrintNextPage();
-            }
+        public void Test()
+        {
+
+        }
+        protected override void PrintHeader()
+        {
+            base.PrintHeader();
+            Console.WriteLine(DateTime.Now);
         }
     }
+   
+
+    //public class CastingSample
+    //{
+    //    public void Cast()
+    //    {
+    //        PrinterBase printer = new TextPrinter();
+    //        if (printer is Ima)
+    //        {
+    //            ((TextPrinter)printer).PrintNextPage();
+    //            TextPrinter textPrinter = (printer as TextPrinter);
+    //            textPrinter.PrintNextPage();
+    //        }
+
+    //        if (!(printer is TextPrinterWithExtendedHeading))
+    //        {
+    //            ((TextPrinterWithExtendedHeading)printer).PrintNextPage();
+    //            TextPrinter textPrinter = (printer as TextPrinterWithExtendedHeading);
+    //            textPrinter.PrintNextPage();
+    //        }
+    //    }
+    //}
 }

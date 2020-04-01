@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F017AEE3-A10B-4B9F-A605-C019C7695CE5}</ProjectGuid>
+    <ProjectGuid>{10B1186B-601D-41FB-9094-5F77A11E837A}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Classes.OOP</RootNamespace>
-    <AssemblyName>Classes.OOP</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>Challenge</RootNamespace>
+    <AssemblyName>Challenge</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -42,10 +43,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Humans\AdvancedNinja.cs" />
+    <Compile Include="Humans\Human.cs" />
+    <Compile Include="Humans\IHuman.cs" />
+    <Compile Include="Humans\IStealth.cs" />
+    <Compile Include="Weapons\IWeapon.cs" />
+    <Compile Include="Humans\Ninja.cs" />
+    <Compile Include="Weapons\Nunjucks.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Humans\IWarrior.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Weapons\Sword.cs" />
+    <Compile Include="Humans\Trooper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dependencies Graph.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

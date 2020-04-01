@@ -12,31 +12,31 @@ namespace Classes.OOP
         {
             TextPrinter textPrinter = new TextPrinter();
             textPrinter.PrintNextPage("Introduction");
-            textPrinter.PrintNextPage("Contents");
+            textPrinter.PrintNextPage("This is the beginning of the story");
+
             ImagePrinter imagePrinter = new ImagePrinter();
             imagePrinter.PrintNextPage(new byte[] { 40, 45, 6 });
             Console.ReadLine();
+
+           //We have code duplication, and the ingeritance comes to the rescue. ProgramWithBaseClass has ready solution
         }
     }
 
-    internal abstract class PrinterBase
+    internal class ImagePrinter
     {
         private const string BookTitle = "Book of jungle";
         private int index = 1;
 
-        internal void PrintFooter()
+        private void PrintFooter()
         {
             Console.WriteLine(this.index++);
         }
 
-        public void PrintHeader()
+        private void PrintHeader()
         {
             Console.WriteLine(BookTitle);
         }
-    }
 
-    internal class ImagePrinter : PrinterBase
-    {
         public void PrintNextPage(byte[] imageBytes)
         {
             PrintHeader();
@@ -51,8 +51,20 @@ namespace Classes.OOP
         }
     }
 
-    internal class TextPrinter : PrinterBase
+    internal class TextPrinter
     {
+        private const string BookTitle = "Book of jungle";
+        private int index = 1;
+
+        private void PrintFooter()
+        {
+            Console.WriteLine(this.index++);
+        }
+
+        private void PrintHeader()
+        {
+            Console.WriteLine(BookTitle);
+        }
 
         public void PrintNextPage(string text)
         {
