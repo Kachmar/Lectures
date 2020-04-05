@@ -8,6 +8,7 @@ namespace Tests
     [TestClass]
     public class FileManagerTest
     {
+        private FileCommander fileCommander = new FileCommander();
        
         [ExpectedException(typeof(FormatException))]
         [TestMethod]

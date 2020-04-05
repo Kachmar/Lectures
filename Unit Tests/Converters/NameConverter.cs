@@ -2,7 +2,7 @@ using System;
 
 namespace Unit_Tests
 {
-   public class NameConverter : IConverter
+   public class NameConverter : INameConverter
     {
 
         public string Convert(string[] elements)
@@ -13,13 +13,13 @@ namespace Unit_Tests
             {
                 throw new Exception("Full name field cannot be empty;");
             }
-            string[] NameAndLastName = fullName.Split(' ');
-            if (NameAndLastName.Length != 2)
+            string[] nameAndLastName = fullName.Split(' ');
+            if (nameAndLastName.Length != 2)
             {
-                throw new Exception("Invalid Full name format: " + NameAndLastName);
+                throw new Exception("Invalid Full name format: " + nameAndLastName);
             }
 
-            return NameAndLastName[0];
+            return nameAndLastName[0];
 
         }
 

@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Converters\DistanceLearningConverter.cs" />
     <Compile Include="Converters\DurationConverter.cs" />
+    <Compile Include="Converters\INameConverter.cs" />
     <Compile Include="FileCommander.cs" />
     <Compile Include="FileInfo.cs" />
     <Compile Include="FileManager.cs" />
@@ -52,14 +53,17 @@
     <Compile Include="IFileCommander.cs" />
     <Compile Include="IFileInfo.cs" />
     <Compile Include="IFileManager.cs" />
-    <Compile Include="Processors\IScoreProcessor.cs" />
-    <Compile Include="Processors\IStudentInfoProcessor.cs" />
+    <Compile Include="ISplitLinesProvider.cs" />
+    <Compile Include="Processors\AverageScoreFileContentGenerator.cs" />
+    <Compile Include="Processors\UniqueNamesFileContentGenerator.cs" />
+    <Compile Include="Processors\IFileContentGenerator.cs" />
     <Compile Include="Converters\LastNameConverter.cs" />
     <Compile Include="Converters\NameConverter.cs" />
     <Compile Include="Converters\PhoneConverter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Processors\StudentInfoProcessor.cs" />
+    <Compile Include="Processors\DurationFileContentGenerator.cs" />
+    <Compile Include="SplitLinesProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -67,6 +71,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Readme.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

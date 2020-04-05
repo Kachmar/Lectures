@@ -6,27 +6,26 @@ namespace Unit_Tests
     {
         private const string ProcessedFolderName = "Processed";
         private const string ErrorFolderName = "Error";
-        private IStudentInfoProcessor studentInfoProcessor;
-
-        private IScoreProcessor scoreProcessor;
+        private IFileContentGenerator[] fileContentGenerators;
         private IFileCommander fileCommander;
 
         public FileProcessor(
             IFileCommander fileCommander,
-            IScoreProcessor scoreProcessor,
-            IStudentInfoProcessor studentInfoProcessor)
-
+            IFileContentGenerator[] fileContentGenerators)
         {
-            this.studentInfoProcessor = studentInfoProcessor;
+            this.fileContentGenerators = fileContentGenerators;
             this.fileCommander = fileCommander;
-            this.scoreProcessor = scoreProcessor;
         }
+
         public void Process(IFileInfo fileInfo)
         {
             try
             {
-                string fileContent = this.studentInfoProcessor.Process(fileInfo);
-                this.fileCommander.SaveFile(this.GetStudentFileName(fileInfo.Name), fileContent);
+                foreach (var fileContentGenerator in fileContentGenerators)
+                {
+                    string fileContent = fileContentGenerator.Process(fileInfo);
+                    this.fileCommander.SaveFile(fileContentGenerator.GetFileName(fileInfo.Name), fileContent);
+                }
             }
             catch (Exception ex)
             {
@@ -51,12 +50,6 @@ namespace Unit_Tests
             {
                 Console.WriteLine($"Failed to move the file {fileInfo.Name} to processed folder, because: {subException.Message}");
             }
-        }
-
-        private string GetStudentFileName(string originalFileName)
-        {
-            int index = originalFileName.IndexOf(".csv");
-            return originalFileName.Insert(index, "_processed_durations");
         }
     }
 }

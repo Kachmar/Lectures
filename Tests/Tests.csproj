@@ -48,6 +48,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AverageScoreFileContentGeneratorTest.cs" />
     <Compile Include="ScoreProcessorTest.cs" />
     <Compile Include="FileProcessorTest.cs" />
     <Compile Include="FileManagerTest.cs" />

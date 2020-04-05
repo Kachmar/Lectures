@@ -1,37 +1,25 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace Unit_Tests
 {
-    public class StudentInfoProcessor : IStudentInfoProcessor
+    public class SplitLinesProvider : ISplitLinesProvider
     {
-        private readonly IConverter[] converters;
-
-        public StudentInfoProcessor(IConverter[] converters)
+        public List<string[]> GetLinesElements(IFileInfo fileInfo)
         {
-            this.converters = converters;
-        }
 
-        public string Process(IFileInfo fileInfo)
-        {
             string[] lines = SplitIntoLines(fileInfo.Content);
-            StringBuilder stringBuilder = new StringBuilder();
+            List<string[]> result = new List<string[]>();
             foreach (var line in lines.Skip(1))
             {
                 var elements = line.Trim().Split(';');
                 ValidateElements(elements);
-                foreach (var converter in this.converters)
-                {
-                    string convertedElement = converter.Convert(elements);
-                    stringBuilder.Append(convertedElement);
-                    stringBuilder.Append("|");
-
-                }
-                stringBuilder.AppendLine();
+                result.Add(elements);
             }
-            return stringBuilder.ToString();
+
+            return result;
         }
 
         private void ValidateElements(string[] elements)
